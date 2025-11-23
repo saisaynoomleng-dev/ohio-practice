@@ -9,7 +9,7 @@ const Bounded = ({
   return (
     <Comp
       className={clsx(
-        'px-3 py-5 md:px-5 lg:px-8 lg:py-8 min-h-screen',
+        'px-3 py-5 md:px-5 lg:px-8 lg:py-8 min-h-screen space-y-5',
         className,
       )}
     >
