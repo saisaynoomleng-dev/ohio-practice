@@ -212,7 +212,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/query.ts
 // Variable: ALL_VANS_QUERY
-// Query: *[_type == 'van'  && defined(slug.current)]| order(name){  name,  slug,  price,  type,  mainImage{    asset->{      url    },      alt  }}
+// Query: *[_type == 'van'  && defined(slug.current) && (  (!defined($type)) ||  $type == null ||  $type == type )]{  name,  slug,  price,  type,  mainImage{    asset->{      url    },      alt  }}
 export type ALL_VANS_QUERYResult = Array<{
   name: string | null;
   slug: Slug | null;
@@ -226,7 +226,7 @@ export type ALL_VANS_QUERYResult = Array<{
   } | null;
 }>;
 // Variable: VAN_QUERY
-// Query: *[_type == 'van'&& slug.current == $slug][0]{    name,    price,    type,    slug,    desc,    mainImage,    reviews[]->{        username,        rating,        desc    }}
+// Query: *[_type == 'van'&& slug.current == $slug][0]{    name,    price,    type,    slug,    desc,    mainImage{      asset->{url},      alt    },    reviews[]->{        username,        rating,        desc    }}
 export type VAN_QUERYResult = {
   name: string | null;
   price: number | null;
@@ -234,17 +234,10 @@ export type VAN_QUERYResult = {
   slug: Slug | null;
   desc: BlockContent | null;
   mainImage: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: 'image';
+    asset: {
+      url: string | null;
+    } | null;
+    alt: string | null;
   } | null;
   reviews: Array<{
     username: string | null;
@@ -257,7 +250,7 @@ export type VAN_QUERYResult = {
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    "*[_type == 'van' \n && defined(slug.current)]\n| order(name){\n  name,\n  slug,\n  price,\n  type,\n  mainImage{\n    asset->{\n      url\n    },\n      alt\n  }\n}": ALL_VANS_QUERYResult;
-    "*[_type == 'van'\n&& slug.current == $slug][0]{\n    name,\n    price,\n    type,\n    slug,\n    desc,\n    mainImage,\n    reviews[]->{\n        username,\n        rating,\n        desc\n    }\n}": VAN_QUERYResult;
+    "*[_type == 'van' \n && defined(slug.current)\n && (\n  (!defined($type)) ||\n  $type == null ||\n  $type == type\n )]{\n  name,\n  slug,\n  price,\n  type,\n  mainImage{\n    asset->{\n      url\n    },\n      alt\n  }\n}": ALL_VANS_QUERYResult;
+    "*[_type == 'van'\n&& slug.current == $slug][0]{\n    name,\n    price,\n    type,\n    slug,\n    desc,\n    mainImage{\n      asset->{url},\n      alt\n    },\n    reviews[]->{\n        username,\n        rating,\n        desc\n    }\n}": VAN_QUERYResult;
   }
 }
