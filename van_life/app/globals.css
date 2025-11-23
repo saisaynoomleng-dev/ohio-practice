@@ -1,5 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -112,11 +113,47 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  /* colors */
+  --color-brand-orange-100: #ffcc8d;
+  --color-brand-orange-200: #ffead0;
+  --color-brand-orange-300: #ffddb2;
+  --color-brand-orange-400: #ff8c38;
+  --color-brand-white: #fff7ed;
+  --color-brand-black-100: #252525;
+  --color-brand-black-200: #161616;
+  --color-brand-simple: #e17654;
+  --color-brand-luxury: #161616;
+  --color-brand-rugged: #115e59;
+
+  /* fonts */
+  --text-fs-900: 2.25rem;
+  --text-fs-800: 2rem;
+  --text-fs-700: 1.5rem;
+  --text-fs-600: 1.25rem;
+  --text-fs-500: 1rem;
+  --text-fs-400: 0.875rem;
+  --text-fs-300: 0.5rem;
+
+  --font-inter: var(--font-inter);
+
+  /* breakpoints */
+  --breakpoint-sm: 560px;
+  --breakpoint-md: 750px;
+  --breakpoint-lg: 1000px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    @apply scroll-smooth;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply font-inter text-fs-500 bg-brand-white text-brand-black-200 tracking-normal leading-normal overflow-x-hidden;
+  }
+  p {
+    @apply text-pretty;
   }
 }
