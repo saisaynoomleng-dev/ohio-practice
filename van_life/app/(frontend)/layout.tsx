@@ -7,9 +7,7 @@ export default function frontendLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <main>
-      <Header />
       {children}
-      <Footer />
 
       <SanityLive />
     </main>

@@ -1,8 +1,12 @@
 import { defineQuery } from 'next-sanity';
 
 export const ALL_VANS_QUERY = defineQuery(`*[_type == 'van' 
- && defined(slug.current)]
-| order(name){
+ && defined(slug.current)
+ && (
+  (!defined($type)) ||
+  $type == null ||
+  $type == type
+ )]{
   name,
   slug,
   price,
@@ -22,7 +26,10 @@ export const VAN_QUERY = defineQuery(`*[_type == 'van'
     type,
     slug,
     desc,
-    mainImage,
+    mainImage{
+      asset->{url},
+      alt
+    },
     reviews[]->{
         username,
         rating,
