@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import { SanityLive } from '@/sanity/lib/live';
 
 export default function frontendLayout({
@@ -5,6 +6,7 @@ export default function frontendLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <main>
+      <Header />
       {children}
       <SanityLive />
     </main>
