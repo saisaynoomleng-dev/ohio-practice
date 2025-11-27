@@ -262,6 +262,13 @@
           }
         },
         "optional": true
+      },
+      "visibility": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
       }
     }
   },

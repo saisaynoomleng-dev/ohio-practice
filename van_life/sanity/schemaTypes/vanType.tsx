@@ -78,6 +78,12 @@ export const vanType = defineType({
       type: 'array',
       of: [{ type: 'reference', to: { type: 'review' } }],
     }),
+    defineField({
+      name: 'visibility',
+      title: 'Visibility',
+      type: 'boolean',
+      initialValue: true,
+    }),
   ],
   preview: {
     select: {
