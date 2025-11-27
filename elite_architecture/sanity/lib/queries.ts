@@ -33,5 +33,9 @@ export const ALL_TEAM_MEMBERS_QUERY = defineQuery(`*[_type == 'teamMember'
  && defined(slug.current)]{
   name,
   role[],
-  slug
+  slug,
+  mainImage{
+    asset->{url},
+    alt
+  }
  }`);

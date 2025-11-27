@@ -155,3 +155,7 @@
     rgba(255, 255, 255, 1) 32%
   );
 }
+
+@utility label-form {
+  @apply after:ml-0.5 after:text-red-400 after:content-['*'] text-fs-300;
+}

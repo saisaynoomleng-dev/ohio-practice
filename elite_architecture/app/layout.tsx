@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { helvetica } from '@/lib/fonts';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { SanityLive } from '@/sanity/lib/live';
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={helvetica.variable}>{children}</body>
+      <body className={helvetica.variable}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+
+        <SanityLive />
+      </body>
     </html>
   );
 }
