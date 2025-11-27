@@ -55,6 +55,7 @@ export type Van = {
     _key: string;
     [internalGroqTypeReferenceTo]?: 'review';
   }>;
+  visibility?: boolean;
 };
 
 export type BlockContent = Array<{
@@ -226,7 +227,7 @@ export type ALL_VANS_QUERYResult = Array<{
   } | null;
 }>;
 // Variable: VAN_QUERY
-// Query: *[_type == 'van'&& slug.current == $slug][0]{    name,    price,    type,    slug,    desc,    mainImage{      asset->{url},      alt    },    reviews[]->{        username,        rating,        desc    }}
+// Query: *[_type == 'van'&& slug.current == $slug][0]{    name,    price,    type,    slug,    desc,    mainImage{      asset->{url},      alt    },    reviews[]->{        username,        rating,        desc    },    visibility}
 export type VAN_QUERYResult = {
   name: string | null;
   price: number | null;
@@ -244,13 +245,42 @@ export type VAN_QUERYResult = {
     rating: number | null;
     desc: string | null;
   }> | null;
+  visibility: boolean | null;
 } | null;
+// Variable: HOST_VANS_QUERY
+// Query: *[_type == 'van'  && defined(slug.current) ]{  name,  slug,  price,  type,  mainImage{    asset->{      url    },      alt  }}
+export type HOST_VANS_QUERYResult = Array<{
+  name: string | null;
+  slug: Slug | null;
+  price: number | null;
+  type: 'luxury' | 'rugged' | 'simple' | null;
+  mainImage: {
+    asset: {
+      url: string | null;
+    } | null;
+    alt: string | null;
+  } | null;
+}>;
+// Variable: ALL_REVIEWS_QUERY
+// Query: *[_type == 'review']{  username,  desc,  rating,  _createdAt,   "vans": *[_type == "van" && references(^._id)][0]{    name,    slug  }}
+export type ALL_REVIEWS_QUERYResult = Array<{
+  username: string | null;
+  desc: string | null;
+  rating: number | null;
+  _createdAt: string;
+  vans: {
+    name: string | null;
+    slug: Slug | null;
+  } | null;
+}>;
 
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
     "*[_type == 'van' \n && defined(slug.current)\n && (\n  (!defined($type)) ||\n  $type == null ||\n  $type == type\n )]{\n  name,\n  slug,\n  price,\n  type,\n  mainImage{\n    asset->{\n      url\n    },\n      alt\n  }\n}": ALL_VANS_QUERYResult;
-    "*[_type == 'van'\n&& slug.current == $slug][0]{\n    name,\n    price,\n    type,\n    slug,\n    desc,\n    mainImage{\n      asset->{url},\n      alt\n    },\n    reviews[]->{\n        username,\n        rating,\n        desc\n    }\n}": VAN_QUERYResult;
+    "*[_type == 'van'\n&& slug.current == $slug][0]{\n    name,\n    price,\n    type,\n    slug,\n    desc,\n    mainImage{\n      asset->{url},\n      alt\n    },\n    reviews[]->{\n        username,\n        rating,\n        desc\n    },\n    visibility\n}": VAN_QUERYResult;
+    "*[_type == 'van' \n && defined(slug.current)\n ]{\n  name,\n  slug,\n  price,\n  type,\n  mainImage{\n    asset->{\n      url\n    },\n      alt\n  }\n}": HOST_VANS_QUERYResult;
+    '*[_type == \'review\']{\n  username,\n  desc,\n  rating,\n  _createdAt,\n   "vans": *[_type == "van" && references(^._id)][0]{\n    name,\n    slug\n  }\n}': ALL_REVIEWS_QUERYResult;
   }
 }
