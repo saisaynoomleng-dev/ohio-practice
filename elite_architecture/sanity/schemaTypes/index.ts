@@ -5,6 +5,7 @@ import { blockContentType } from './blockContent';
 import { successType } from './successType';
 import { teamMemberType } from './teamMemberType';
 import { contactType } from './contactType';
+import { newsletterType } from './newsletterType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -14,5 +15,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     successType,
     teamMemberType,
     contactType,
+    newsletterType,
   ],
 };
