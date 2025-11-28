@@ -59,7 +59,9 @@ const AboutPage = async () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 md:justify-between">
-        <h3 className="text-fs-600 md:text-fs-700 uppercase">Our vision</h3>
+        <h3 className="text-fs-600 md:text-fs-700 uppercase" id="vision">
+          Our vision
+        </h3>
         <div className="flex flex-col gap-y-3">
           <p className="font-medium">/Forward-Thinking Design</p>
           <p>

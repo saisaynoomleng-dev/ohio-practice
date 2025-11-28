@@ -33,8 +33,8 @@ const MemberCard = ({
       <p className="font-semibold uppercase">{name}</p>
 
       <p className="flex gap-x-2 uppercase">
-        {role?.map((role) => (
-          <span>{role}</span>
+        {role?.map((role, i) => (
+          <span key={i}>{role}</span>
         ))}
       </p>
     </div>
