@@ -23,7 +23,7 @@ export const PROJECT_QUERY = defineQuery(`*[_type == 'project'
  }`);
 
 export const COMPANY_INFO_QUERY = defineQuery(`*[_type == 'success'
- ]{
+ ][0]{
   foundedDate,
   sqft,
   customers

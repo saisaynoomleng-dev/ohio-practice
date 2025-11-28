@@ -13,6 +13,16 @@
  */
 
 // Source: schema.json
+export type Newsletter = {
+  _id: string;
+  _type: 'newsletter';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  email?: string;
+  name?: string;
+};
+
 export type Contact = {
   _id: string;
   _type: 'contact';
@@ -229,6 +239,7 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | Newsletter
   | Contact
   | TeamMember
   | BlockImage
@@ -275,12 +286,12 @@ export type PROJECT_QUERYResult = {
   } | null;
 } | null;
 // Variable: COMPANY_INFO_QUERY
-// Query: *[_type == 'success' ]{  foundedDate,  sqft,  customers }
-export type COMPANY_INFO_QUERYResult = Array<{
+// Query: *[_type == 'success' ][0]{  foundedDate,  sqft,  customers }
+export type COMPANY_INFO_QUERYResult = {
   foundedDate: string | null;
   sqft: string | null;
   customers: number | null;
-}>;
+} | null;
 // Variable: ALL_TEAM_MEMBERS_QUERY
 // Query: *[_type == 'teamMember' && defined(slug.current)]{  name,  role[],  slug,  mainImage{    asset->{url},    alt  } }
 export type ALL_TEAM_MEMBERS_QUERYResult = Array<{
@@ -301,7 +312,7 @@ declare module '@sanity/client' {
   interface SanityQueries {
     "*[_type == 'project'\n && defined(slug.current)]{\n  name,\n  slug,\n  desc,\n  mainImage{\n    asset->{url},\n    alt\n  }\n }": ALL_PROJECTS_QUERYResult;
     "*[_type == 'project'\n && slug.current == $slug][0]{\n  name,\n  slug,\n  desc,\n  mainImage{\n    asset->{url},\n    alt\n  }\n }": PROJECT_QUERYResult;
-    "*[_type == 'success'\n ]{\n  foundedDate,\n  sqft,\n  customers\n }": COMPANY_INFO_QUERYResult;
+    "*[_type == 'success'\n ][0]{\n  foundedDate,\n  sqft,\n  customers\n }": COMPANY_INFO_QUERYResult;
     "*[_type == 'teamMember'\n && defined(slug.current)]{\n  name,\n  role[],\n  slug,\n  mainImage{\n    asset->{url},\n    alt\n  }\n }": ALL_TEAM_MEMBERS_QUERYResult;
   }
 }
