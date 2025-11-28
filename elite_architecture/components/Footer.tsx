@@ -47,7 +47,7 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 md:gap-x-5 gap-y-2 border-y border-brand-black py-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 md:gap-x-5 gap-y-2 border-y-2 border-brand-black/10 py-3">
         {FOOTER_LINKS.map((link) => (
           <Link
             href={link.url}
@@ -59,7 +59,7 @@ const Footer = () => {
         ))}
       </div>
 
-      <div className="border-b py-3 border-brand-black space-y-3">
+      <div className="border-b-2 py-3 border-brand-black/10 space-y-3">
         <p className="font-semibold text-center text-fs-300">
           Subscribe Our Newsletter
         </p>
