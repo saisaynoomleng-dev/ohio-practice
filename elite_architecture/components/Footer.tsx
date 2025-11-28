@@ -6,6 +6,7 @@ import { useActionState } from 'react';
 import { handleNewsletterSubscription } from '@/lib/actions';
 import { Input } from './ui/input';
 import SubmitButton from './SubmitButton';
+import Image from 'next/image';
 
 const FOOTER_LINKS = [
   { name: 'Home', url: '/' },
@@ -33,7 +34,19 @@ const Footer = () => {
   );
 
   return (
-    <footer className="px-3 py-5 md:px-5 lg:px-8">
+    <footer className="px-3 py-5 md:px-5 lg:px-8 bg-brand-black/5">
+      <div className="py-2 grid md:grid-cols-[auto_1fr] md:justify-between gap-y-3 md:gap-x-10">
+        <Link href="/">
+          <Image src="/logo.png" width={100} height={100} priority alt="" />
+        </Link>
+        <p className="text-fs-300 text-right">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti
+          distinctio, inventore tempora, repellat quidem quisquam asperiores
+          numquam architecto impedit nihil, ut perspiciatis accusamus velit
+          suscipit quibusdam vel voluptatum voluptatibus quaerat.
+        </p>
+      </div>
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 md:gap-x-5 gap-y-2 border-y border-brand-black py-3">
         {FOOTER_LINKS.map((link) => (
           <Link

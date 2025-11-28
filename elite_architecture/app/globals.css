@@ -146,13 +146,20 @@
   body {
     @apply font-helvetica bg-brand-white text-brand-black overflow-x-hidden tracking-normal leading-normal;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply text-balance;
+  }
 }
 
 @utility gradient {
   background: linear-gradient(
-    90deg,
+    180deg,
     rgba(114, 202, 237, 1) 0%,
-    rgba(255, 255, 255, 1) 32%
+    rgba(255, 255, 255, 1) 68%
   );
 }
 
