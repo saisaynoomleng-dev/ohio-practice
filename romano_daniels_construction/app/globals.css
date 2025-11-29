@@ -1,5 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -112,11 +113,47 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  /* colors */
+  --color-brand-white: #ffffff;
+  --color-brand-black-100: #343434;
+  --color-brand-black-200: #171a00;
+  --color-brand-green: #e3ff00;
+
+  /* typography */
+  /* font families */
+  --font-helvetica: var(--font-helvetica);
+  --font-azeret-mono: var(--font-azeret-mono);
+
+  /* font sizes */
+  --text-fs-900: 6rem;
+  --text-fs-800: 3.94rem;
+  --text-fs-700: 3.125rem;
+  --text-fs-600: 1.5rem;
+  --text-fs-500: 1.125rem;
+  --text-fs-400: 0.875rem;
+  --text-fs-300: 0.5rem;
+
+  /* breakpoint */
+  --breakpoint-lg: 1000px;
+  --breakpoint-md: 750px;
+  --breakpoint-sm: 560px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-brand-white text-brand-black-200 leading-normal tracking-normal overflow-x-hidden text-fs-400 font-helvetica;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-balance;
+  }
+  p {
+    @apply text-pretty;
   }
 }
