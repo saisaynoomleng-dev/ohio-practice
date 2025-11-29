@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { azeret_mono, helvetica } from '@/lib/fonts';
+import Header from '@/components/Header';
+import { SanityLive } from '@/sanity/lib/live';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +24,11 @@ export default function RootLayout({
       <body
         className={`${helvetica.variable} ${azeret_mono.variable} antialiased`}
       >
+        <Header />
         <main>{children}</main>
+        <Footer />
+
+        <SanityLive />
       </body>
     </html>
   );
