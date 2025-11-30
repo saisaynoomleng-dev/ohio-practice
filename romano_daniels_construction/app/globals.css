@@ -157,3 +157,15 @@
     @apply text-pretty;
   }
 }
+
+@utility home-hero-desktop {
+  @apply bg-[url(/home-hero-desktop.avif)] bg-center bg-no-repeat bg-cover;
+}
+
+@utility home-hero-mobile {
+  @apply bg-[url(/home-hero-mobile.avif)] bg-center bg-no-repeat bg-cover;
+}
+
+@utility home-hero-tablet {
+  @apply bg-[url(/home-hero-tablet.avif)] bg-center bg-no-repeat bg-cover;
+}

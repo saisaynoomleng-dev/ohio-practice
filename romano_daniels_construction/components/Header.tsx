@@ -56,7 +56,7 @@ const Header = () => {
 
       {/* mobile nav */}
       <button
-        className="md:hidden relative z-20"
+        className="md:hidden relative z-100"
         onClick={handleNavButton}
         aria-label="Toggle Navigation"
         aria-expanded={navOpen}
@@ -70,7 +70,7 @@ const Header = () => {
         id="mobile-menu"
         aria-label="main navigation"
         className={clsx(
-          'md:hidden flex flex-col fixed inset-0 z-10 bg-brand-white items-center gap-y-10 py-20 transition-transform duration-300',
+          'md:hidden flex flex-col fixed inset-0 z-50 bg-brand-white items-center gap-y-10 py-20 transition-transform duration-300',
           navOpen ? 'translate-x-0' : 'translate-x-full',
         )}
       >
