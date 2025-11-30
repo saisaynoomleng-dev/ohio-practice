@@ -2,7 +2,6 @@ import Bounded from '@/components/Bounded';
 import Cta from '@/components/Cta';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import Image from 'next/image';
 
 export default function Home() {
   return (
