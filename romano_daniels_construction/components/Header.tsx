@@ -80,7 +80,7 @@ const Header = () => {
             key={link.url}
             onClick={() => setNavOpen(false)}
             className={clsx(
-              'py-1 w-[50%] text-center block transition',
+              'py-1 w-[80%] text-center block transition',
               pathname === link.url
                 ? 'font-semibold bg-brand-green'
                 : 'font-normal bg-brand-white',
