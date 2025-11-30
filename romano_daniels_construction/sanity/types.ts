@@ -267,10 +267,11 @@ export type PROJECT_QUERYResult = {
   finishDate: string | null;
 } | null;
 // Variable: ALL_SERVICES_QUERY
-// Query: *[_type == 'service' && defined(slug.current)]| order(_createdAt){  name,  desc }
+// Query: *[_type == 'service' && defined(slug.current)]| order(_createdAt){  name,  desc,  slug }
 export type ALL_SERVICES_QUERYResult = Array<{
   name: string | null;
   desc: string;
+  slug: Slug;
 }>;
 
 // Query TypeMap
@@ -279,6 +280,6 @@ declare module '@sanity/client' {
   interface SanityQueries {
     "*[_type == 'project'\n && defined(slug.current)]\n|order(startDate){\n  name,\n  slug,\n  mainImage{\n    alt,\n    asset->{url}\n  },\n  desc,\n  startDate,\n  finishDate\n }": ALL_PROJECTS_QUERYResult;
     "*[_type == 'project'\n && slug.current == $slug][0]{\n  name,\n  slug,\n  mainImage{\n    alt,\n    asset->{url}\n  },\n  desc,\n  startDate,\n  finishDate\n }": PROJECT_QUERYResult;
-    "*[_type == 'service'\n && defined(slug.current)]\n| order(_createdAt){\n  name,\n  desc\n }": ALL_SERVICES_QUERYResult;
+    "*[_type == 'service'\n && defined(slug.current)]\n| order(_createdAt){\n  name,\n  desc,\n  slug\n }": ALL_SERVICES_QUERYResult;
   }
 }
