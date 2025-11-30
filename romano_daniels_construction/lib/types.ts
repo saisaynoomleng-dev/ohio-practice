@@ -10,4 +10,5 @@ export type CTAProps = {
   children: React.ReactNode;
   className?: string;
   url: string;
+  arrowStyle?: 'green' | 'black';
 };
