@@ -31,5 +31,6 @@ export const ALL_SERVICES_QUERY = defineQuery(`*[_type == 'service'
  && defined(slug.current)]
 | order(_createdAt){
   name,
-  desc
+  desc,
+  slug
  }`);
