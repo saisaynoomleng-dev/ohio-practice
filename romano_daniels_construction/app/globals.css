@@ -169,3 +169,15 @@
 @utility home-hero-tablet {
   @apply bg-[url(/home-hero-tablet.avif)] bg-center bg-no-repeat bg-cover;
 }
+
+@utility project-hero-desktop {
+  @apply bg-[url(/project-hero-desktop.avif)] bg-center bg-no-repeat bg-cover;
+}
+
+@utility project-hero-mobile {
+  @apply bg-[url(/project-hero-mobile.avif)] bg-center bg-no-repeat bg-cover;
+}
+
+@utility project-hero-tablet {
+  @apply bg-[url(/project-hero-tablet.avif)] bg-center bg-no-repeat bg-cover;
+}
