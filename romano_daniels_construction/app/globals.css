@@ -151,7 +151,7 @@
   h2,
   h3,
   h4 {
-    @apply text-balance;
+    @apply text-balance leading-none;
   }
   p {
     @apply text-pretty;
@@ -180,4 +180,8 @@
 
 @utility project-hero-tablet {
   @apply bg-[url(/project-hero-tablet.avif)] bg-center bg-no-repeat bg-cover;
+}
+
+@utility divider {
+  @apply bg-brand-black-200/20 w-[90%] h-px;
 }
