@@ -185,3 +185,7 @@
 @utility divider {
   @apply bg-brand-black-200/20 w-[90%] h-px;
 }
+
+@utility form-label {
+  @apply uppercase font-azeret-mono after:content-['*'] after:text-red-500 after:ml-0.5;
+}
