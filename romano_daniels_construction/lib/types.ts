@@ -12,3 +12,10 @@ export type CTAProps = {
   url: string;
   arrowStyle?: 'green' | 'black';
 };
+
+// contact form props
+export type ContactFormProps = {
+  status: string;
+  message: string;
+  field?: string;
+};
